@@ -146,6 +146,8 @@ def main(event, context):
         "key": "path/to/image.jpg"
     }
     """
+    print(f"Event: {event}")
+    print(f"Context: {context}")
     try:
         # Extract S3 information from event
         if 's3_url' in event:
