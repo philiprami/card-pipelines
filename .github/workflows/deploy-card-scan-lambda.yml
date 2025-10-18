@@ -55,9 +55,9 @@ jobs:
             --function-name ${{ env.LAMBDA_FUNCTION_NAME }} \
             --package-type Image \
             --code ImageUri=${{ env.IMAGE_URI }} \
-            --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/lambda-basic-execution \
+            --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/lambda-basic-execution-role \
             --memory-size 1024 \
-            --timeout 30
+            --timeout 60
           sleep 30
 
       - name: Update Lambda function
