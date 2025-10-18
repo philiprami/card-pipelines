@@ -159,9 +159,10 @@ def main(event, context):
             },
             'body': ''
         }
-        
+
     try:
         # Extract S3 information from event
+        event = json.loads(event.get('body'))
         if 's3_url' in event:
             s3_url = event['s3_url']
             bucket, key = parse_s3_url(s3_url)
