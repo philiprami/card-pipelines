@@ -148,6 +148,18 @@ def main(event, context):
     """
     print(f"Event: {event}")
     print(f"Context: {context}")
+    if event.get('requestContext', {}).get('http', {}).get('method') == 'OPTIONS':
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Accept',
+                'Access-Control-Max-Age': '86400'
+            },
+            'body': ''
+        }
+        
     try:
         # Extract S3 information from event
         if 's3_url' in event:
